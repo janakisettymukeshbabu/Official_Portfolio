@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Janakisetty Mukesh Babu</title>
+  <meta name="description" content="Explore the featured projects built by Janakisetty Mukesh Babu.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script>
+    (function() {
+      const theme = localStorage.getItem('portfolio-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+  <canvas id="particles-canvas"></canvas>
+  <div class="page-wrapper">
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">JMB</a>
+        <div class="nav-links" id="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../pages/about.html">About</a>
+          <a href="../pages/skills.html">Skills</a>
+          <a href="../pages/projects.html">Projects</a>
+          <a href="../pages/leetcode.html">LeetCode</a>
+          <a href="../pages/education.html">Education</a>
+          <a href="../pages/certifications.html">Certifications</a>
+          <a href="../pages/resume.html">Resume</a>
+          <a href="../pages/contact.html">Contact</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon">🌙</span>
+          </button>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-badge">My Work</span>
+            <h1 class="section-title">Featured Projects</h1>
+          </div>
+
+          <div class="project-card">
+            <div class="project-gallery">
+              <div class="project-gallery-track">
+                <div class="project-gallery-slide">
+                  <img src="../assets/images/agro-architecture.png" alt="Agro Disease Detector - Architecture">
+                </div>
+                <div class="project-gallery-slide">
+                  <img src="../assets/images/agro-home.png" alt="Agro Disease Detector - Home">
+                </div>
+                <div class="project-gallery-slide">
+                  <img src="../assets/images/agro-detect.png" alt="Agro Disease Detector - Detection">
+                </div>
+                <div class="project-gallery-slide">
+                  <img src="../assets/images/agro-results.png" alt="Agro Disease Detector - Results">
+                </div>
+              </div>
+              <button class="gallery-arrow prev" aria-label="Previous slide">◀</button>
+              <button class="gallery-arrow next" aria-label="Next slide">▶</button>
+              <div class="gallery-nav">
+                <span class="gallery-dot active"></span>
+                <span class="gallery-dot"></span>
+                <span class="gallery-dot"></span>
+                <span class="gallery-dot"></span>
+              </div>
+            </div>
+
+            <div class="project-info">
+              <h3 class="project-title">🌿 Agro Disease Detector</h3>
+              <p class="project-description">An AI-powered crop disease detection system that uses deep learning (MobileNetV2 CNN) to identify diseases in corn/maize leaves. Upload a photo and get instant diagnosis with treatment recommendations and prevention tips. Built with React frontend and Flask API backend.</p>
+              <div class="project-tech">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Flask</span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">CNN</span>
+                <span class="skill-tag">MobileNetV2</span>
+                <span class="skill-tag">Deep Learning</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/janakisettymukeshbabu/Agro-disease-detector" target="_blank" class="btn btn-primary">GitHub</a>
+                <a href="https://github.com/janakisettymukeshbabu/Agro-disease-detector" target="_blank" class="btn btn-outline">Live Demo</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="footer-text">© 2026 Janakisetty Mukesh Babu. Crafted with passion.</p>
+        <div class="footer-links">
+          <a href="https://github.com/janakisettymukeshbabu" target="_blank" class="social-link">🔗</a>
+          <a href="https://www.linkedin.com/in/janakisetty-mukesh-babu-9a880234a/" target="_blank" class="social-link">💼</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
