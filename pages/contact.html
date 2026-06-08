@@ -122,5 +122,30 @@
 
   </div>
   <script src="../assets/js/main.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const form=document.getElementById("contact-form");
+ if(!form) return;
+
+ form.addEventListener("submit",function(e){
+  e.preventDefault();
+
+  emailjs.send("service_3e6anoz","template_jl5uxon",{
+   from_name: form.name.value,
+   from_email: form.email.value,
+   subject: form.subject.value,
+   message: form.message.value
+  }).then(()=>{
+    alert("Message sent successfully!");
+    form.reset();
+  }).catch((err)=>{
+    alert("Failed to send message.");
+    console.log(err);
+  });
+ });
+});
+</script>
+
 </body>
 </html>
