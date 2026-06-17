@@ -289,19 +289,77 @@ function setActiveNavLink() {
   });
 }
 
-/* ---- Contact Form ---- */
+/* ---- Contact Form (EmailJS) ---- */
 function handleContactForm(e) {
   e.preventDefault();
+
   const form = e.target;
-  const btn = form.querySelector('button[type="submit"]');
+  const btn = document.getElementById('contact-submit-btn');
+  const statusEl = document.getElementById('contact-status');
   const originalText = btn.innerHTML;
 
-  btn.innerHTML = '✓ Message Sent!';
-  btn.style.background = 'linear-gradient(135deg, #00c853, #00e676)';
+  // Initialize EmailJS (safe to call multiple times)
+  emailjs.init('vEza5auz73lvXXtxj');
 
-  setTimeout(() => {
-    btn.innerHTML = originalText;
-    btn.style.background = '';
-    form.reset();
-  }, 3000);
+  // Disable button and show loading state
+  btn.disabled = true;
+  btn.innerHTML = 'Sending...';
+  btn.style.opacity = '0.7';
+  btn.style.cursor = 'not-allowed';
+
+  // Hide previous status
+  if (statusEl) statusEl.style.display = 'none';
+
+  // Collect form data using the name attributes
+  const templateParams = {
+    from_name: form.from_name.value,
+    from_email: form.from_email.value,
+    subject: form.subject.value || '(No subject)',
+    message: form.message.value
+  };
+
+  emailjs.send('service_3e6anoz', 'template_jl5uxon', templateParams)
+    .then(function() {
+      // Success
+      btn.innerHTML = '✓ Message Sent!';
+      btn.style.background = 'linear-gradient(135deg, #00c853, #00e676)';
+      btn.style.opacity = '1';
+
+      if (statusEl) {
+        statusEl.textContent = 'Thank you! Your message has been sent successfully.';
+        statusEl.style.color = '#00c853';
+        statusEl.style.display = 'block';
+      }
+
+      setTimeout(function() {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+        btn.style.cursor = '';
+        btn.disabled = false;
+        form.reset();
+        if (statusEl) statusEl.style.display = 'none';
+      }, 3000);
+    })
+    .catch(function(error) {
+      // Error
+      console.error('EmailJS Error:', error);
+
+      btn.innerHTML = '✗ Failed to Send';
+      btn.style.background = 'linear-gradient(135deg, #ff1744, #ff5252)';
+      btn.style.opacity = '1';
+
+      if (statusEl) {
+        statusEl.textContent = 'Oops! Something went wrong. Please try again or email me directly.';
+        statusEl.style.color = '#ff5252';
+        statusEl.style.display = 'block';
+      }
+
+      setTimeout(function() {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+        btn.style.cursor = '';
+        btn.disabled = false;
+      }, 3000);
+    });
 }
+
